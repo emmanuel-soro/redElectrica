@@ -13,30 +13,34 @@ public class Pais extends EjercicioOIA {
 	private Grafo grafo;
 	private int cantCiudades;
 
-	private static final String ENTRADA = "..\\..\\Preparacion de prueba\\Lote de Prueba\\Entrada\\";
-	private static final String SALIDA = "..\\..\\Ejecucion de prueba\\Salida obtenida\\";
+	private static final String ENTRADA =
+	        "/home/cx.ar/esoro/git/redElectrica/Soro-Laurenti/Preparacion de prueba/Lote de Prueba/Entrada/";
+	private static final String SALIDA =
+	        "/home/cx.ar/esoro/git/redElectrica/Soro-Laurenti/Ejecucion de prueba/Salida obtenida/";
 
-	public Pais(String entrada, String salida) throws FileNotFoundException {
+	public Pais(final String entrada, final String salida) throws FileNotFoundException {
+
 		super(new File(ENTRADA + entrada), new File(SALIDA + salida));
 
 		Scanner sc = new Scanner(this.entrada);
 
-		cantCiudades = sc.nextInt();
+		this.cantCiudades = sc.nextInt();
 		int cantCentrales = sc.nextInt();
 
-		centrales = new int[cantCentrales];
+		this.centrales = new int[cantCentrales];
 		for (int i = 0; i < cantCentrales; i++) {
 			int nroCentral = sc.nextInt();
-			centrales[i] = nroCentral - 1;
+			this.centrales[i] = nroCentral - 1;
 		}
 
 		List<Arista> listaAristas = new ArrayList<Arista>();
-		for (int i = 0; i < cantCiudades; i++) {
-			for (int j = 0; j < cantCiudades; j++) {
+		for (int i = 0; i < this.cantCiudades; i++) {
+			for (int j = 0; j < this.cantCiudades; j++) {
 				if (i != j) {
 					listaAristas.add(new Arista(i, j, sc.nextInt()));
-				} else
+				} else {
 					sc.nextInt();
+				}
 
 			}
 		}
@@ -48,18 +52,18 @@ public class Pais extends EjercicioOIA {
 			aristas[i] = listaAristas.get(i);
 		}
 
-		grafo = new Grafo(aristas);
+		this.grafo = new Grafo(aristas);
 	}
 
 	@Override
 	public void resolver() {
 
-		List<Arista> arbolCostoMinimo = grafo.resolverPrim(centrales);
+		List<Arista> arbolCostoMinimo = this.grafo.resolverPrim(this.centrales);
 
 		try {
 			PrintWriter pw = new PrintWriter(this.salida);
 
-			if (cantCiudades == centrales.length) {
+			if (this.cantCiudades == this.centrales.length) {
 				pw.println("0");
 			} else {
 				int costoMinimo = 0;
