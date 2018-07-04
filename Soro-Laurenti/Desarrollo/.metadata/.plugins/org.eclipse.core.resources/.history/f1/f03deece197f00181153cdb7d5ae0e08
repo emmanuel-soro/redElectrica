@@ -1,0 +1,10 @@
+package electrificacion;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Pais pais = new Pais("02-circulo3.in", "02-circulo3.in")
+	}
+
+}

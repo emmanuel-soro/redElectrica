@@ -1,0 +1,51 @@
+package electrificacion;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Pais extends EjercicioOIA{
+	
+	private int[] centrales;
+	private Grafo grafo;
+	
+	private static final String ENTRADA = "..\\..\\Preparacion de prueba\\Lote de Prueba\\Entrada\\";
+	private static final String SALIDA = "..\\..\\Preparacion de prueba\\Ejecucion de prueba\\Salida obtenida\\";
+	
+	public Pais(String entrada, String salida) throws FileNotFoundException {
+		super(new File(ENTRADA + entrada), new File(SALIDA + salida));
+		
+		Scanner sc = new Scanner(this.entrada);
+		
+		int tamañoMatriz = sc.nextInt();
+		int cantCentrales = sc.nextInt();
+		
+		centrales = new int[cantCentrales];
+		for (int i = 0; i < cantCentrales; i++) {
+			centrales[i] = sc.nextInt();
+		}
+		
+		List<Arista> listaAristas = new ArrayList<Arista>();
+		int[][] matrizAdyacencia = new int[tamañoMatriz][tamañoMatriz];
+		for (int i = 0; i < tamañoMatriz; i++) {
+			for (int j = 0; j < tamañoMatriz; j++) {
+				if (i != j) {
+					listaAristas.add(new Arista(i, j, sc.nextInt()));
+				} else
+					sc.nextInt();
+				
+			}
+			System.out.println();
+		}
+		
+		sc.close();
+	}
+
+	@Override
+	public void resolver() {
+		// TODO Auto-generated method stub
+		
+	}
+}

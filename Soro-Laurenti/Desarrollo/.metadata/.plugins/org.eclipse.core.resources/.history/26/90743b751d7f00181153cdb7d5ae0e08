@@ -1,0 +1,12 @@
+package electrificacion;
+
+import java.io.FileNotFoundException;
+
+public class Main {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		Pais pais = new Pais("02-circulo3.in", "02-circulo3.out");
+	}
+
+}

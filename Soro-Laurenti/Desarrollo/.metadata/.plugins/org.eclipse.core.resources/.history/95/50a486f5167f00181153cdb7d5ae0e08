@@ -1,0 +1,7 @@
+package electrificacion;
+
+public abstract class EjercicioOIA {
+	
+	File entrada;
+	File salida;
+}

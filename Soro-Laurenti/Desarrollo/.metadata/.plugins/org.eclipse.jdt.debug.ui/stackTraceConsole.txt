@@ -1,0 +1,3 @@
+for (Arista e : listaAdyacencia.get(centrales[i])) {
+				colaPrioridad.add(e);
+			}

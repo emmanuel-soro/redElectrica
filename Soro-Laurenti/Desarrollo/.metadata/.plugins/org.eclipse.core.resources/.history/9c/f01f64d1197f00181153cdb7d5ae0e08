@@ -1,0 +1,12 @@
+package electrificacion;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		static final String ENTRADA = ".\\.\\Preparacion de prueba\\Lote de Prueba\\Entrada"
+		
+		Pais pais = new Pais("02-circulo3.in", "02-circulo3.in")
+	}
+
+}
