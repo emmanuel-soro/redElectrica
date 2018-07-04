@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,15 +34,18 @@ public class Pais extends EjercicioOIA {
 			this.centrales[i] = nroCentral - 1;
 		}
 
+		List listCentr = Arrays.asList(this.centrales);
+
 		List<Arista> listaAristas = new ArrayList<Arista>();
 		for (int i = 0; i < this.cantCiudades; i++) {
 			for (int j = 0; j < this.cantCiudades; j++) {
 				if (i != j) {
-					listaAristas.add(new Arista(i, j, sc.nextInt()));
+					if (!listCentr.contains(j)) {
+						listaAristas.add(new Arista(i, j, sc.nextInt()));
+					}
 				} else {
 					sc.nextInt();
 				}
-
 			}
 		}
 		sc.close();
