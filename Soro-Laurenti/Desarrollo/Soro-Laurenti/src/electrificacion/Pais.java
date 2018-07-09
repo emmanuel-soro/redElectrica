@@ -15,9 +15,11 @@ public class Pais extends EjercicioOIA {
 	private int cantCiudades;
 
 	private static final String ENTRADA =
-	        "/home/cx.ar/esoro/git/redElectrica/Soro-Laurenti/Preparacion de prueba/Lote de Prueba/Entrada/";
+	        "Preparacion de prueba/Lote de Prueba/Entrada/";
 	private static final String SALIDA =
-	        "/home/cx.ar/esoro/git/redElectrica/Soro-Laurenti/Ejecucion de prueba/Salida obtenida/";
+	        "Ejecucion de prueba/Salida obtenida/";
+	
+	
 
 	public Pais(final String entrada, final String salida) throws FileNotFoundException {
 
@@ -41,7 +43,12 @@ public class Pais extends EjercicioOIA {
 			for (int j = 0; j < this.cantCiudades; j++) {
 				if (i != j) {
 					if (!listCentr.contains(j)) {
-						listaAristas.add(new Arista(i, j, sc.nextInt()));
+						int costo = sc.nextInt();
+						if (costo == 0) {
+							continue;
+						}
+						
+						listaAristas.add(new Arista(i, j, costo));
 					}
 				} else {
 					sc.nextInt();

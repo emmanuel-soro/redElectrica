@@ -6,7 +6,9 @@ public class Main {
 
 	public static void main(final String[] args) throws FileNotFoundException {
 
-		Pais pais = new Pais("01-Enunciado.in", "01-Enunciado.out");
+		Pais pais = null; 
+		
+		pais = new Pais("01-Enunciado.in", "01-Enunciado.out");
 		pais.resolver();
 
 		pais = new Pais("02-circulo3.in", "02-circulo3.out");
