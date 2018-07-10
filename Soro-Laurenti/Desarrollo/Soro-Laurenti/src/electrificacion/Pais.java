@@ -16,8 +16,8 @@ public class Pais extends EjercicioOIA {
 	private Grafo grafo;
 	private int cantCiudades;
 
-	private static final String ENTRADA = "Preparacion de prueba/Lote de Prueba/Entrada/";
-	private static final String SALIDA = "Ejecucion de prueba/Salida obtenida/";
+	private static final String ENTRADA = "././Preparacion de prueba/Lote de Prueba/Entrada/";
+	private static final String SALIDA = "././Ejecucion de prueba/Salida obtenida/";
 
 	public Pais(final String entrada, final String salida) throws FileNotFoundException {
 

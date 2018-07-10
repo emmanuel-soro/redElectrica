@@ -25,8 +25,11 @@ public class Main {
 
 		pais = new Pais("06-todasAunaCentral.in", "06-todasAunaCentral.out");
 		pais.resolver();
-
-		pais = new Pais("07-estres100conexo.in", "07-estres100conexo.out");
+		
+		pais = new Pais("07-2centrales.in", "07-2centrales.out");
+		pais.resolver();
+		
+		pais = new Pais("08-estres100conexo.in", "08-estres100conexo.out");
 		pais.resolver();
 
 		System.out.println("Finalizado!");
