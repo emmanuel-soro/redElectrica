@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,12 +16,8 @@ public class Pais extends EjercicioOIA {
 	private Grafo grafo;
 	private int cantCiudades;
 
-	private static final String ENTRADA =
-	        "Preparacion de prueba/Lote de Prueba/Entrada/";
-	private static final String SALIDA =
-	        "Ejecucion de prueba/Salida obtenida/";
-	
-	
+	private static final String ENTRADA = "Preparacion de prueba/Lote de Prueba/Entrada/";
+	private static final String SALIDA = "Ejecucion de prueba/Salida obtenida/";
 
 	public Pais(final String entrada, final String salida) throws FileNotFoundException {
 
@@ -39,15 +37,22 @@ public class Pais extends EjercicioOIA {
 		List listCentr = Arrays.asList(this.centrales);
 
 		List<Arista> listaAristas = new ArrayList<Arista>();
+
 		for (int i = 0; i < this.cantCiudades; i++) {
 			for (int j = 0; j < this.cantCiudades; j++) {
+
+				// if (i > j) {
+				// sc.nextInt();
+				// continue;
+				// }
+
 				if (i != j) {
 					if (!listCentr.contains(j)) {
 						int costo = sc.nextInt();
 						if (costo == 0) {
 							continue;
 						}
-						
+
 						listaAristas.add(new Arista(i, j, costo));
 					}
 				} else {
@@ -55,6 +60,7 @@ public class Pais extends EjercicioOIA {
 				}
 			}
 		}
+
 		sc.close();
 
 		Arista[] aristas = new Arista[listaAristas.size()];
@@ -70,6 +76,26 @@ public class Pais extends EjercicioOIA {
 	public void resolver() {
 
 		List<Arista> arbolCostoMinimo = this.grafo.resolverPrim(this.centrales);
+
+		for (Arista arista : arbolCostoMinimo) {
+			int nodoAux;
+			
+			if (arista.getNodoDestino() < arista.getNodoOrigen()) {
+				nodoAux = arista.getNodoOrigen();
+				arista.setNodoOrigen(arista.getNodoDestino());
+				arista.setNodoDestino(nodoAux);
+			}
+			
+		}
+
+		Collections.sort(arbolCostoMinimo, new Comparator<Arista>() {
+
+			@Override
+			public int compare(Arista o1, Arista o2) {
+
+				return o1.getNodoOrigen()- o2.getNodoOrigen();
+			}
+		});
 
 		try {
 			PrintWriter pw = new PrintWriter(this.salida);

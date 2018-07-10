@@ -33,7 +33,7 @@ public class Grafo {
 
 				Arista primero = o1;
 				Arista segundo = o2;
-
+				
 				if (primero.getPeso() < segundo.getPeso()) {
 					return -1;
 				} else if (primero.getPeso() > segundo.getPeso()) {
