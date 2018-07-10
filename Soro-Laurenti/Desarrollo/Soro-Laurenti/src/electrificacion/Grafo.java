@@ -9,20 +9,20 @@ public class Grafo {
 
 	private List<List<Arista>> listaAdyacencia;
 
-	public Grafo(final Arista[] aristas) {
+	public Grafo(Arista[] aristas) {
 
-		this.listaAdyacencia = new ArrayList<>();
+		listaAdyacencia = new ArrayList<>();
 
 		for (int i = 0; i < aristas.length; ++i) {
-			this.listaAdyacencia.add(new ArrayList<Arista>());
+			listaAdyacencia.add(new ArrayList<Arista>());
 		}
 
 		for (Arista unaArista : aristas) {
-			this.listaAdyacencia.get(unaArista.getNodoOrigen()).add(unaArista);
+			listaAdyacencia.get(unaArista.getNodoOrigen()).add(unaArista);
 		}
 	}
 
-	public List<Arista> resolverPrim(final int[] centrales) {
+	public List<Arista> resolverPrim(int[] centrales) {
 
 		List<Arista> arbolCostoMinimo = new ArrayList<Arista>();
 
@@ -44,10 +44,10 @@ public class Grafo {
 			}
 		});
 
-		boolean[] visitado = new boolean[this.listaAdyacencia.size()];
+		boolean[] visitado = new boolean[listaAdyacencia.size()];
 
 		for (int i = 0; i < centrales.length; i++) {
-			for (Arista e : this.listaAdyacencia.get(centrales[i])) {
+			for (Arista e : listaAdyacencia.get(centrales[i])) {
 				colaPrioridad.add(e);
 			}
 			visitado[centrales[i]] = true;
@@ -67,7 +67,7 @@ public class Grafo {
 
 			visitado[e.getNodoOrigen()] = true;
 
-			for (Arista arista : this.listaAdyacencia.get(e.getNodoDestino())) {
+			for (Arista arista : listaAdyacencia.get(e.getNodoDestino())) {
 				if (!visitado[arista.getNodoDestino()]) {
 					colaPrioridad.add(arista);
 				}

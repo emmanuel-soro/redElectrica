@@ -19,7 +19,7 @@ public class Pais extends EjercicioOIA {
 	private static final String ENTRADA = "././Preparacion de prueba/Lote de Prueba/Entrada/";
 	private static final String SALIDA = "././Ejecucion de prueba/Salida obtenida/";
 
-	public Pais(final String entrada, final String salida) throws FileNotFoundException {
+	public Pais(String entrada, String salida) throws FileNotFoundException {
 
 		super(new File(ENTRADA + entrada), new File(SALIDA + salida));
 
@@ -31,20 +31,15 @@ public class Pais extends EjercicioOIA {
 		this.centrales = new int[cantCentrales];
 		for (int i = 0; i < cantCentrales; i++) {
 			int nroCentral = sc.nextInt();
-			this.centrales[i] = nroCentral - 1;
+			centrales[i] = nroCentral - 1;
 		}
 
-		List listCentr = Arrays.asList(this.centrales);
+		List listCentr = Arrays.asList(centrales);
 
 		List<Arista> listaAristas = new ArrayList<Arista>();
 
-		for (int i = 0; i < this.cantCiudades; i++) {
-			for (int j = 0; j < this.cantCiudades; j++) {
-
-				// if (i > j) {
-				// sc.nextInt();
-				// continue;
-				// }
+		for (int i = 0; i < cantCiudades; i++) {
+			for (int j = 0; j < cantCiudades; j++) {
 
 				if (i != j) {
 					if (!listCentr.contains(j)) {
@@ -69,23 +64,23 @@ public class Pais extends EjercicioOIA {
 			aristas[i] = listaAristas.get(i);
 		}
 
-		this.grafo = new Grafo(aristas);
+		grafo = new Grafo(aristas);
 	}
 
 	@Override
 	public void resolver() {
 
-		List<Arista> arbolCostoMinimo = this.grafo.resolverPrim(this.centrales);
+		List<Arista> arbolCostoMinimo = grafo.resolverPrim(centrales);
 
 		for (Arista arista : arbolCostoMinimo) {
 			int nodoAux;
-			
+
 			if (arista.getNodoDestino() < arista.getNodoOrigen()) {
 				nodoAux = arista.getNodoOrigen();
 				arista.setNodoOrigen(arista.getNodoDestino());
 				arista.setNodoDestino(nodoAux);
 			}
-			
+
 		}
 
 		Collections.sort(arbolCostoMinimo, new Comparator<Arista>() {
@@ -93,14 +88,14 @@ public class Pais extends EjercicioOIA {
 			@Override
 			public int compare(Arista o1, Arista o2) {
 
-				return o1.getNodoOrigen()- o2.getNodoOrigen();
+				return o1.getNodoOrigen() - o2.getNodoOrigen();
 			}
 		});
 
 		try {
-			PrintWriter pw = new PrintWriter(this.salida);
+			PrintWriter pw = new PrintWriter(salida);
 
-			if (this.cantCiudades == this.centrales.length) {
+			if (cantCiudades == centrales.length) {
 				pw.println("0");
 			} else {
 				int costoMinimo = 0;
