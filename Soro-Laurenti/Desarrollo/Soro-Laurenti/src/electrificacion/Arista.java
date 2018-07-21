@@ -23,4 +23,16 @@ public class Arista {
 		this.nodoDestino = destino;
 		this.peso = costo;
 	}
+
+	public void setNodoOrigen(int nodoOrigen) {
+		this.nodoOrigen = nodoOrigen;
+	}
+
+	public void setNodoDestino(int nodoDestino) {
+		this.nodoDestino = nodoDestino;
+	}
+
+	public void setPeso(int peso) {
+		this.peso = peso;
+	}
 }
